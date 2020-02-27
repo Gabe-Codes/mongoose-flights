@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/stylesheets/show.css" />
+		<title>Flight Details</title>
+	</head>
+	<body>
+		<nav>
+			<a href="/flights">All Flights</a>
+			<h1>Flight Details</h1>
+			<a href="/flights/<%= flight._id %>/tickets/new">Buy Ticket</a>
+		</nav>
+		<table class="info">
+			<thead>
+				<tr>
+					<th>Airline</th>
+					<th>Flight #</th>
+					<th>Departs</th>
+					<th>Airport</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><%= flight.airline %></td>
+					<td><%= flight.flightNo %></td>
+					<td><%= flight.departs.toLocaleString() %></td>
+					<td><%= flight.airport %></td>
+				</tr>
+			</tbody>
+		</table>
+		<section class="tickets">
+            <h2>Tickets</h2>
+            <section>
+				<% tickets.forEach(t => { %>
+                <div>Seat: <%= t.seat %> - $<%= t.price %></div>
+                <% }) %>
+            </section>
+		</section>
+		<h2>Destinations</h2>
+		<form action="/flights/<%= flight._id %>/destinations" method="POST">
+			<Section>
+				<label>Arrival: <input type="datetime-local" name="arrival"/></label>
+				<label
+					>Airport:
+					<select name="airport">
+						<option value="AUS">AUS</option>
+						<option value="DAL">DAL</option>
+						<option value="LAX">LAX</option>
+						<option value="SAN">SAN</option>
+						<option value="DEN">DEN</option>
+					</select></label
+				>
+				<input type="submit" value="Add Destination" />
+			</Section>
+		</form>
+		<% if (flight.destinations.length) { %>
+		<table class="destintaions">
+			<thead>
+				<tr>
+					<th>Destination</th>
+					<th>Arrival</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% flight.destinations.forEach(r => { %>
+				<tr>
+					<td><%= r.airport %></td>
+					<td><%= r.arrival.toLocaleString() %></td>
+				</tr>
+				<% }); %>
+			</tbody>
+		</table>
+		<% } %>
+	</body>
+</html>

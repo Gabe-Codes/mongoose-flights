@@ -1,0 +1,102 @@
+* {
+	box-sizing: border-box;
+	font-family: Helvetica;
+}
+
+nav {
+	grid-area: nav;
+	background-color: #181818;
+    padding: 0 20px 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+nav > h1 {
+	color: white;
+}
+
+nav > a {
+    color: white;
+    text-decoration: none;
+}
+
+nav > a:hover {
+    color: #17fdda;
+    border-bottom: 2px solid #17fdda;
+    border-radius: 20%;
+}
+
+body {
+    background-color: #1d1d1d;
+	margin: 0;
+	height: 100vh;
+	display: grid;
+	grid-template-rows: max-content max-content .3fr .15fr .1fr auto;
+	grid-template-areas:
+		'nav'
+        'main'
+        'tickets'
+        'h2'
+        'form'
+        'destinations';
+}
+
+table {
+    font-size: 20px;
+}
+
+table thead th {
+    color: white;
+	padding: 5px;
+	border-bottom: 2px solid rgb(161, 161, 161);
+}
+
+table td {
+    color: white;
+	padding: 10px;
+	text-align: center;
+}
+
+.info {
+    grid-area: main;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    grid-area: form;
+}
+
+label {
+    color: white;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: rgb(161, 161, 161);
+}
+
+.destinations {
+    grid-area: destinations;
+}
+
+.tickets {
+    grid-area: tickets;
+    color: white;
+}
+
+.tickets > h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.tickets > section {
+    display: grid;
+    position: fixed;
+    left: 46%;
+    top: 29%;    
+}

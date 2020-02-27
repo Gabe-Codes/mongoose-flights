@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/stylesheets/all-flights.css" />
+		<title>Flights List</title>
+	</head>
+	<body>
+        <nav>
+            <a class="home" href="/">Home</a>
+            <h1>Flights List</h1>
+            <a class="add" href="/flights/new">Add Flight</a>
+        </nav>
+		<h2><%= time %></h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Airline</th>
+					<th>Flight #</th>
+					<th>Departs</th>
+					<th>Airport</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% flights.forEach(flight => { %>
+				<tr>
+					<td><%= flight.airline %></td>
+					<td><%= flight.flightNo %></td>
+					<% if (flight.departs.getTime() < Date.now()) { %>
+					<td class="red"><%= flight.departs.toLocaleString() %></td>
+					<% } else { %>
+					<td><%= flight.departs.toLocaleString() %></td>
+                    <% } %>
+                    <td><%= flight.airport %></td>
+                    <td><a href="/flights/<%= flight._id %>">DETAILS</a></td>
+				</tr>
+                <% }); %>
+			</tbody>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/stylesheets/ticket.css" />
+		<title>Buy Ticket</title>
+	</head>
+	<body>
+        <nav>
+			<a href="/">Home</a>
+            <h1>Ticket Purchase</h1>
+			<a href="/flights">All Flights</a>
+		</nav>
+		<form action="/flights/<%= flightId %>/tickets" method="POST">
+			<fieldset>
+				<legend>Ticket Details</legend>
+				<label for="seat">Seat:</label>
+				<input id="seat" name="seat" required pattern="[A-F][1-9]\d?" />
+				<label>Price:</label>
+				<input for="price" type="text" name="price" min="0" />
+				<input id="price" type="submit" value="Add Ticket" />
+			</fieldset>
+		</form>
+	</body>
+</html>
